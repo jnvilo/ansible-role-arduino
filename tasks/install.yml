@@ -1,0 +1,19 @@
+---
+
+- name: download arduino installer
+  unarchive:
+    src: https://downloads.arduino.cc/arduino-{{arduino_version}}-linux64.tar.xz
+    dest: /tmp
+    remote_src: yes 
+  become: yes 
+  become_user: jnvilo
+  tags:
+    - download_arduino_ide
+
+- name: install arduino ide 
+  shell:
+    cmd: "sh /tmp/arduino-{{arduino_version}}/install.sh"
+  tags:
+    - install_arduino_ide    
+  
+

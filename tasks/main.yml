@@ -1,0 +1,28 @@
+---
+# tasks file for arduino
+
+- name: is_arduino_installed
+  stat: 
+    path: /usr/local/bin/arduino
+  register: arduino_binary
+  tags:
+    - debug
+   
+- name: get the current installed version
+  shell:
+    cmd: "arduino --version 2>&1 | grep Arduino | awk '{print $2}'"
+  register: current_version
+  when: arduino_binary.stat.exists
+  tags:
+    - debug
+
+
+- name: changed version 
+  include: install.yml 
+  when: (arduino_version != current_version.stdout) and arduino_binary.stat.exists
+  
+- name: install 
+  include: install.yml 
+  when: (arduino_version != current_version.stdout) and (arduino_binary.stat.exists == false)
+  
+
