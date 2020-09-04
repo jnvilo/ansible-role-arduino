@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Role Name
 =========
 
@@ -36,3 +37,7 @@ Author Information
 ------------------
 
 An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+=======
+# ansible-role-arduino
+Install arduino IDE.
+>>>>>>> 8316555620d05b77116a693da8290b1a4ab58b66
