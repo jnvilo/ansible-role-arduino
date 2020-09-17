@@ -16,13 +16,11 @@
   tags:
     - debug
 
-
 - name: changed version 
   include: install.yml 
-  when: (arduino_version != current_version.stdout) and arduino_binary.stat.exists
-  
+
 - name: install 
   include: install.yml 
-  when: (arduino_version != current_version.stdout) and (arduino_binary.stat.exists == false)
+  when: (arduino_version != current_version) and (arduino_binary.stat.exists == false)
   
 
